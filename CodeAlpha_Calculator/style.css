@@ -1,0 +1,96 @@
+/* Basic Setup & Font */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A classic, clean font */
+    font-weight: 500; /* A bit bolder for clarity */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(135deg, #b2e1ff, #d1f2eb); /* Soft Sky Gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* The Main Calculator Body */
+.calculator-grid {
+    display: grid;
+    width: 350px;
+    padding: 25px;
+    border-radius: 30px;
+    background: #e0e5ec;
+    box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff; /* The main shadow effect */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(120px, auto) repeat(5, 1fr);
+    gap: 15px; /* Adds space between buttons */
+}
+
+/* The Display Screen */
+.output {
+    grid-column: 1 / -1; /* Span across all 4 columns */
+    background: #2c3e50; /* A dark, professional screen color */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-radius: 15px;
+    border: 2px solid #bdc3c7;
+    box-shadow: inset 5px 5px 10px #233140, inset -5px -5px 10px #354b60; /* Inset shadow for depth */
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .6);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: #ffffff;
+    font-size: 2.8rem;
+}
+
+/* General Button Styling */
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 1.8rem;
+    border: none;
+    outline: none;
+    border-radius: 20px; /* Rounded buttons */
+    background: #e0e5ec;
+    box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff; /* Button "extruding" shadow */
+    transition: all 0.1s ease-in-out; /* For smooth interaction */
+}
+
+/* INTERACTIVE PART: The "Pressed" Effect */
+.calculator-grid > button:active {
+    box-shadow: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff; /* "Pushes" the button in */
+    font-size: 1.7rem; /* Makes the text slightly smaller when pressed */
+}
+
+/* Spanning Buttons (AC and =) */
+.span-two {
+    grid-column: span 2;
+}
+
+/* Special Button Colors for Functionality */
+button[data-operation], button[data-delete] {
+    color: #3498db; /* A nice blue for operations */
+}
+
+button[data-all-clear] {
+    color: #e74c3c; /* Red for the clear button */
+}
+
+button[data-equals] {
+    background: #3498db; /* A solid blue for the equals button */
+    color: white;
+    box-shadow: 5px 5px 10px #2980b9, -5px -5px 10px #3fc5ff; /* A different shadow for the colored button */
+}
+
+button[data-equals]:active {
+    box-shadow: inset 5px 5px 10px #2980b9, inset -5px -5px 10px #3fc5ff;
+}
